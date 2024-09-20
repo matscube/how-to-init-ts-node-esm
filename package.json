@@ -2,10 +2,19 @@
   "name": "how-to-init-ts-node-esm",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run compile && npm run build && npm run execute",
+    "execute": "node --env-file=.env dist/index.js",
+    "build": "esbuild src/index.ts --bundle --outfile=dist/index.js",
+    "compile": "tsc --noEmit"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@tsconfig/recommended": "^1.0.7",
+    "@types/node": "^22.5.5",
+    "esbuild": "^0.23.1",
+    "typescript": "^5.6.2"
+  }
 }
